@@ -1,0 +1,96 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: darkgray;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.app-wrapper {
+  display: grid;
+  grid-template-areas:
+    'Header Header '
+    'NavBar MainContent ';
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-row-gap: 20px;
+  grid-column-gap: 20px;
+}
+.Header{
+  background-color: aqua;
+  grid-area: Header;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+}
+
+.Header a{
+  text-decoration: none;
+}
+
+.Logo {
+  max-height: 50px;
+}
+.NavBar{
+  border-radius: 15px;
+  grid-area: NavBar;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+  height: 100vh;
+  text-align: center;
+  background-color: #446215;
+
+}
+.NavBar a{
+  text-decoration: none;
+  color: aliceblue;
+  font-size: 20px;
+}
+.MainContent {
+  border-radius: 35px;
+  grid-area: MainContent;
+  text-align: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+  width: 100%;
+  background-color: #d6efad;
+  overflow: hidden;
+}
+.FrontImg {
+  max-height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+.ProfileWrapper{
+  display: flex;
+  padding: 25px;
+  gap: 50px;
+
+}
+
+.ProfileWrapper a{
+  text-decoration: none;
+}
+.LokiFace {
+  border-radius: 15px;
+  width: 200px;
+  height: 200px;
+}
+.ProfileTextBlock{
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  font-size: 22px;
+  color: #776666;
+}
+
