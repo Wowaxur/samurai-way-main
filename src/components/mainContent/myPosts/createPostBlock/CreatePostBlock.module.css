@@ -1,0 +1,48 @@
+.PostBlock {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CreatePostBlockForm {
+    display: flex;
+}
+
+.InputContainer {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.CreateNewPostArea {
+    gap: 30px;
+    display: flex;
+    width: 90%;
+    max-width: 900px;
+    min-width: 350px;
+    min-height: 40px;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 10px 7%;
+    background-color: #c4c3c3;
+}
+
+.CreateNewPostBtn {
+    color: white;
+    background-color: green;
+    width: 150px;
+    height: 40px;
+    border-radius: 5px;
+    margin-top: 10px;
+    margin-left: 45%;
+
+
+}
+
+.PostTitle {
+    font-size: 28px;
+    text-align: left;
+    margin-left: 10%;
+    color: brown;
+}

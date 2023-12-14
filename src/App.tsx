@@ -2,7 +2,7 @@ import './App.css';
 import React from "react";
 import Header from "./components/header/Header";
 import MainContent from "./components/mainContent/MainContent";
-
+import NavBar from "./components/navBar/NavBar";
 
 function App() {
     // debugger
@@ -20,17 +20,4 @@ export default App;
 
 
 
-const NavBar = () => {
-    return (
-        <nav className='NavBar'>
-        <span><a href='#'>Profile</a></span>
-        <span><a href='#'>Messages</a></span>
-            <span><a href='#'>News</a></span>
-            <span><a href='#'>Music</a></span>
-            <br/>
-            <span><a href='#'>Settings</a></span>
 
-
-        </nav>
-    )
-}

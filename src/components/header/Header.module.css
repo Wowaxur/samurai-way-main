@@ -1,0 +1,21 @@
+.Header{
+    background-color: aqua;
+    grid-area: Header;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+
+
+.link {
+    text-decoration: none;
+    color: #328ddc;
+    font-size: 20px;
+}
+.link:hover{
+    color: gold;
+}
+.Logo {
+    max-height: 50px;
+}

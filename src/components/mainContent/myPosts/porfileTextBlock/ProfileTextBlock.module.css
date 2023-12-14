@@ -1,0 +1,8 @@
+
+.ProfileTextBlock{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-size: 22px;
+    color: #776666;
+}
