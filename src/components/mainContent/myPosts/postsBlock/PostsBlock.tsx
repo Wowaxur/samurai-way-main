@@ -39,7 +39,7 @@ const PostsBlock = () => {
             text: text,
             userId: 1, // Set the userId according to your logic
         };
-        setDbposts([...dbposts, newPost]);
+        setDbposts([newPost,...dbposts]);
     };
 
     return (
