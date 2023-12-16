@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/samurai-way-main/static/css/main.47d3b3e2.css",
-    "main.js": "/samurai-way-main/static/js/main.8a8f6ee7.js",
+    "main.css": "/samurai-way-main/static/css/main.8603e6f7.css",
+    "main.js": "/samurai-way-main/static/js/main.14772ef4.js",
     "static/media/logo.png": "/samurai-way-main/static/media/logo.4f33a4b817f8039c941d.png",
     "static/media/lokiface.png": "/samurai-way-main/static/media/lokiface.4b3e6cf1049f0dbaafed.png",
-    "static/media/front-end-development.jpg": "/samurai-way-main/static/media/front-end-development.52bec3427f5f8638e641.jpg",
     "index.html": "/samurai-way-main/index.html",
-    "main.47d3b3e2.css.map": "/samurai-way-main/static/css/main.47d3b3e2.css.map",
-    "main.8a8f6ee7.js.map": "/samurai-way-main/static/js/main.8a8f6ee7.js.map"
+    "main.8603e6f7.css.map": "/samurai-way-main/static/css/main.8603e6f7.css.map",
+    "main.14772ef4.js.map": "/samurai-way-main/static/js/main.14772ef4.js.map"
   },
   "entrypoints": [
-    "static/css/main.47d3b3e2.css",
-    "static/js/main.8a8f6ee7.js"
+    "static/css/main.8603e6f7.css",
+    "static/js/main.14772ef4.js"
   ]
 }
