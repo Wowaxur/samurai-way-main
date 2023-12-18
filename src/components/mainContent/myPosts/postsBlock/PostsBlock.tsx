@@ -40,7 +40,7 @@ const PostsBlock = () => {
             userId: 1, // Set the userId according to your logic
         };
         setDbposts([newPost,...dbposts]);
-    };
+    }; 
 
     return (
         <div className={s.PostsBlock}>
