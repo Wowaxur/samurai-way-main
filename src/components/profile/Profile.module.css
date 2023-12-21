@@ -1,13 +1,5 @@
 .MainContent {
-    border-radius: 35px;
-    grid-area: MainContent;
-    text-align: center;
-    justify-content: center;
-    margin: 0 auto;
-    width: 100%;
-    padding-bottom: 30px;
-    background-color: #d6efad;
-    overflow-x: hidden;
+
 }
 .FrontImg {
     max-height: 300px;
