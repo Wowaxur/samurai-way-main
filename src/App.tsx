@@ -1,8 +1,9 @@
 import './App.css';
 import React from "react";
 import Header from "./components/header/Header";
-import MainContent from "./components/mainContent/MainContent";
 import NavBar from "./components/navBar/NavBar";
+import Profile from "./components/profile/Profile";
+import Dialogs from "./components/dialogs/Dialogs";
 
 function App() {
     // debugger
@@ -10,8 +11,11 @@ function App() {
 
         <div className='app-wrapper'>
             <Header/>
-            <NavBar ></NavBar>
-            <MainContent/>
+            <NavBar/>
+            <div className={'app-wrapper-content'}>
+                 <Profile/>
+               {/* <Dialogs/>*/}
+            </div>
         </div>
     );
 }
