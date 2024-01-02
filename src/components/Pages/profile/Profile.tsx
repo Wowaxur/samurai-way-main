@@ -1,5 +1,5 @@
 import React from "react";
-import LokiFace from '../images/lokiface.png'
+import LokiFace from '../../images/lokiface.png'
 import s from './Profile.module.css'
 import {ProfileTextBlock} from "./porfileTextBlock/ProfileTextBlock";
 import PostsBlock from "./myPosts/postsBlock/PostsBlock";

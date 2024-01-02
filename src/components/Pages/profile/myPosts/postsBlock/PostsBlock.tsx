@@ -1,8 +1,8 @@
 
 import React, { useState } from 'react';
 import s from './PostsBlock.module.css'
-import { userDb } from '../../../../redux/state';
-import state from "../../../../redux/state";
+import { userDb } from '../../../../../redux/state';
+import state from "../../../../../redux/state";
 import CreatePostBlock from "../createPostBlock/CreatePostBlock";
 type dbPostsType = {
     message: string;

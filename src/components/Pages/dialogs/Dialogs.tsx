@@ -6,6 +6,15 @@ const Dialogs = () => {
     return (
         <div className={s.MainContent}>
             Dialogs
+            Dialogs
+            Dialogs
+            <br/>
+            Dialogs
+            Dialogs
+            Dialogs
+            Dialogs
+            Dialogs
+
         </div>
     );
 };

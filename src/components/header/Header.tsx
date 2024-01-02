@@ -7,7 +7,7 @@ const Header =  () => {
         <a className={s.link} href={'#s'}>Home</a>
         <a className={s.link} href={'#s'}>News</a>
         <a className={s.link} href={'#s'}>Feed</a>
-        <a className={s.link} href={'#s'}>Messages</a>
+        {/*<a className={s.link} href={'#s'}>Messages</a>*/}
     </header>)
 
 }
