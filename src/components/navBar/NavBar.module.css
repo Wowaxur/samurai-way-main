@@ -14,13 +14,13 @@
     top: 10px;
 }
 
-    .link {
+.link {
     text-decoration: none;
     color: aliceblue;
-        font-size: 20px;
+    font-size: 20px;
+    display: inline-block;
 }
-    .link:hover{
-            color: gold;
-            }
-
-
+.NavBar .link:hover {
+    color: gold;
+    transform: scale(1.2);
+}
