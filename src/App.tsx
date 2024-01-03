@@ -10,7 +10,6 @@ import Music from "./components/Pages/music/Music";
 import Settings from "./components/Pages/settings/Settings";
 
 function App() {
-    // debugger
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
