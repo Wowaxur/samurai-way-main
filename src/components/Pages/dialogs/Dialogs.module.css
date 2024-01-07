@@ -1,4 +1,29 @@
-.MainContent {
+.DialogsContent {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.UserDialogsList {
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
 
-    overflow-x: hidden;
+.UserDialog {
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+}
+.ActiveUserDialog {
+    background-color: #d0d0d0;
+}
+.UserDialog:hover {
+    background-color: #e0e0e0;
+}
+
+.MesageList {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
 }
