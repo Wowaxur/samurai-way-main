@@ -1,17 +1,41 @@
 import React from "react";
 import s from './NavBar.module.css'
-import {NavLink} from "react-router-dom";
+import {NavLink, useLocation} from "react-router-dom";
+import { useMatch, Link } from 'react-router-dom';
+type CustomNavLinkType ={
+    to: string;
+    children: React.ReactNode;
+    activeClass: string;
+    className?: string
+}
 
 
+function CustomNavLink({ to, children, activeClass, className, ...rest }: CustomNavLinkType) {
+    let location = useLocation();
+    let isActive = location.pathname === to;
+
+    return (
+        <Link
+            to={to}
+            className={isActive ? activeClass : className}
+            {...rest}
+        >
+            {children}
+        </Link>
+    );
+}
 const NavBar = () => {
+
     return (
         <nav className={s.NavBar}>
-            <span className={s.specButton}><NavLink className={s.link} activeClassName={s.activeLink} to={'/profile' }>Profile</NavLink></span>
-            <span className={s.specButton}><NavLink className={s.link} activeClassName={s.activeLink} to='/dialogs'>Messages</NavLink></span>
-            <span className={s.specButton}><NavLink className={s.link} activeClassName={s.activeLink} to='/news'>News</NavLink></span>
-            <span className={s.specButton}><NavLink  className={s.link} activeClassName={s.activeLink}to='/music'>Music</NavLink></span>
+        <span className={s.specButton}>
+        <CustomNavLink className={s.link} activeClass={s.activeLink} to='/profile'>Profile</CustomNavLink>
+         </span>
+            <span className={s.specButton}><CustomNavLink className={s.link} activeClass={s.activeLink}  to='/dialogs'>Messages</CustomNavLink></span>
+            <span className={s.specButton}> <CustomNavLink className={s.link} activeClass={s.activeLink}  to='/news'>News</CustomNavLink></span>
+            <span className={s.specButton}><CustomNavLink  className={s.link} activeClass={s.activeLink} to='/music'>Music</CustomNavLink></span>
             <br/>
-            <span className={s.specButton}> <NavLink  className={s.link} activeClassName={s.activeLink} to='/settings'>Settings</NavLink></span>
+            <span className={s.specButton}> <CustomNavLink  className={s.link} activeClass={s.activeLink} to='/settings'>Settings</CustomNavLink></span>
 
 
         </nav>
