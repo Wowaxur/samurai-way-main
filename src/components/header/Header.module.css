@@ -2,7 +2,7 @@
     background-color: aqua;
     grid-area: Header;
     display: flex;
-    justify-content: space-around;
+    justify-content: left;
     align-items: center;
 
 }
@@ -17,5 +17,6 @@
     color: gold;
 }
 .Logo {
+    margin-left: 20px;
     max-height: 50px;
 }
