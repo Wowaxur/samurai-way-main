@@ -84,7 +84,8 @@ let state: RootStateType = {
     },
     dialogsPage: {
         dialogs: [
-            {id: 1, name: 'Dimych'},
+            {id:0, name: 'Vlad'},
+            {id: 1, name: 'Dimych '},
             {id: 2, name: 'Andrew'},
             {id: 3, name: 'Sveta'},
             {id: 4, name: 'Sasha'},
