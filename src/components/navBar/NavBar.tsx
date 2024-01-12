@@ -10,7 +10,7 @@ type CustomNavLinkType ={
 }
 
 
-function CustomNavLink({ to, children, activeClass, className, ...rest }: CustomNavLinkType) {
+export function CustomNavLink({ to, children, activeClass, className, ...rest }: CustomNavLinkType) {
     let location = useLocation();
     let isActive = location.pathname === to;
 
