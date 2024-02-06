@@ -8,19 +8,19 @@ type DialogType = {
     id: number
     name: string
 }
-type PostType = {
+export type PostType = {
     id: string
     message: string
     image?: string
     likesCount: number
     userId: number
 }
-type profilePageType = {
+export type profilePageType = {
     posts: Array<PostType>
 
 }
 
-type dialogsPageType = {
+export type dialogsPageType = {
     dialogs: Array<DialogType>
     messages: Array<MessageType>
 }

@@ -3,9 +3,10 @@ import LokiFace from '../../images/lokiface.png'
 import s from './Profile.module.css'
 import {ProfileTextBlock} from "./porfileTextBlock/ProfileTextBlock";
 import PostsBlock from "./myPosts/postsBlock/PostsBlock";
+import {profilePageType} from "../../../redux/state";
 
 
-const Profile = () => {
+const Profile = (props: {state: profilePageType}) => {
 
     return (
         <div className={s.MainContent}>
@@ -15,8 +16,7 @@ const Profile = () => {
                 <img className={s.LokiFace} src={LokiFace} alt={'123'}/>
                 <ProfileTextBlock/>
             </div>
-            <PostsBlock/>
-
+            <PostsBlock posts={props.state.posts} />
         </div>
     )
 }

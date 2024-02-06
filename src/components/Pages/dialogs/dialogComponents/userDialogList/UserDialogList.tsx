@@ -1,6 +1,6 @@
 import React from 'react';
 import s from "./UserDialogList.module.css";
-import {dialogsPageType} from "../../Dialogs";
+import {dialogsPageType} from "../../../../../redux/state";
 
 export type UserDialogListProps = {
     dbdialogs: dialogsPageType,

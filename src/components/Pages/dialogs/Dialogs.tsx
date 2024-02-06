@@ -1,25 +1,13 @@
 import React, {useState} from 'react';
 import s from './Dialogs.module.css';
-import state, {userDb} from "../../../redux/state";
+import state, {dialogsPageType, RootStateType, userDb} from "../../../redux/state";
 import UserDialogList from "./dialogComponents/userDialogList/UserDialogList";
 import MessageList from "./dialogComponents/messageList/MessageList";
-type dialogsType={
-    id: number
-    name: string
-}
-type MessageType = {
-    id: number
-    message: string
-}
 
-export type dialogsPageType = {
-    dialogs: Array<dialogsType>
-    messages: Array<MessageType>
-}
 
-const Dialogs = () => {
+const Dialogs = (props: { state: RootStateType }) => {
     let [inputValue, setInputValue] = useState("");
-    let [dbdialogs, setdbDialogs] = useState<dialogsPageType>(state.dialogsPage)
+    let [dbdialogs, setdbDialogs] = useState<dialogsPageType>(props.state.dialogsPage)
     let [selectedUserId, setSelectedUserId] = useState<null | number>(null);
 
 
