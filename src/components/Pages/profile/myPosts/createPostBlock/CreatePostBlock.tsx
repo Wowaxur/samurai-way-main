@@ -1,43 +1,44 @@
-import React, { useState } from 'react';
+import React, {useRef, useState} from 'react';
 import s from './CreatePostBlock.module.css';
 
-type CreatePostBlockProps = {
-    onAddPost?: (text: string) => void;
-};
 
-const CreatePostBlock: React.FC<CreatePostBlockProps> = ({ onAddPost }) => {
-    const [postText, setPostText] = useState('');
+interface CreatePostBlockProps {
+    addPost: (text: string) => void;
+}
 
-    const handlePostChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        setPostText(event.target.value);
+const CreatePostBlock: React.FC<CreatePostBlockProps> = (props) => {
+
+    let newPostElement = React.createRef<HTMLTextAreaElement>()
+
+    const addPost = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault(); // Prevent the default form submission
+        // Using a non-null assertion operator (!) to bypass TypeScript's safety checks
+        let text = newPostElement.current!.value;
+        props.addPost(text);
+        newPostElement.current!.value = ''; // Clear the textarea after posting
     };
 
-    const handlePostSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        if (postText.trim() !== '') {
-            onAddPost?.(postText);
-            setPostText('');
-        }
-    };
+
 
     return (
-        <div className={s.PostBlock}>
+        <form className={s.PostBlock}>
             <h2 className={s.PostTitle}>My Posts</h2>
-            <form className={s.CreatePostBlockForm} onSubmit={handlePostSubmit}>
+            <div className={s.CreatePostBlockForm}>
                 <div className={s.InputContainer}>
-                    <input
-                        className={s.CreateNewPostArea}
-                        type="text"
-                        placeholder="Your News"
-                        value={postText}
-                        onChange={handlePostChange}
-                    />
-                    <button className={s.CreateNewPostBtn} type="submit">
-                        Post
+                     <textarea
+                         ref={newPostElement}
+                         className={s.CreateNewPostArea}
+                         placeholder="Your News"
+                     />
+                    <button
+                        className={s.CreateNewPostBtn}
+                        type="submit"
+                        onClick={addPost}
+                    >Post
                     </button>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     );
 };
 

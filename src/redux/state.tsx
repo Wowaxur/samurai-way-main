@@ -8,6 +8,30 @@ type DialogType = {
     id: number
     name: string
 }
+type CityType = {
+    title: string
+    country: string
+}
+
+type WebSiteType = {
+    webSiteTitle: string
+    webSiteUrl: string
+}
+
+type AddressType = {
+    city: CityType
+    street: string
+}
+
+export type UserType = {
+    id: number
+    name: string
+    dateOfBirth: string
+    address: AddressType
+    education: string
+    webSite: WebSiteType
+}
+
 export type PostType = {
     id: string
     message: string
@@ -30,6 +54,7 @@ export type RootStateType = {
     profilePage: profilePageType
     dialogsPage: dialogsPageType
     sidebar: SideBar
+    user: UserType
 
 }
 export type userDbType = {
@@ -52,6 +77,24 @@ export const userDb: userDbType[] = [
 
 
 let state: RootStateType = {
+    user:
+        {
+            id: 1,
+            name: "Vladislav Vakula",
+            dateOfBirth: '1 December 1997',
+            address: {
+                city: {
+                    title: "Krasnodar",
+                    country: "Russia"
+                },
+                street: "Naberezhnaya"
+            },
+            education: 'KubSTU',
+            webSite: {
+                webSiteTitle: 'Github',
+                webSiteUrl: 'https://github.com/Wowaxur',
+            },
+        },
     profilePage: {
         posts: [
             {
@@ -84,7 +127,7 @@ let state: RootStateType = {
     },
     dialogsPage: {
         dialogs: [
-            {id:0, name: 'Vlad'},
+            {id: 0, name: 'Vlad'},
             {id: 1, name: 'Dimych '},
             {id: 2, name: 'Andrew'},
             {id: 3, name: 'Sveta'},
@@ -102,4 +145,15 @@ let state: RootStateType = {
     },
     sidebar: {}
 }
+export let addPost = (postMessage: string) =>{
+    let newPost = {
+        userId: userDb[0].userId,
+        id: v1(),
+        message: postMessage,
+        likesCount: 0
+    }
+    state.profilePage.posts.push(newPost)
+}
+
+
 export default state;

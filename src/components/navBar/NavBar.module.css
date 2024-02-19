@@ -44,3 +44,25 @@
     background-color: rgba(255,255,255,0.2);
     border-color: transparent;
 }
+.FridendWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0 auto;
+}
+.friendList{
+    background-color: white;
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: 25%;
+    min-width: 100px;
+    min-height: 40px;
+    align-items: center;
+}
+.FriendName{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+    align-items: center;
+}

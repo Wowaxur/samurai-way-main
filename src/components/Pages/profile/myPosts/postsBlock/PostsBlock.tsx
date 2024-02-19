@@ -12,21 +12,20 @@
 
 
 
-    const PostsBlock = (props: { posts: PostType[] }) => {
+    const PostsBlock = (props: any) => {
         const [dbposts, setDbposts] = useState<dbPostsType[]>(props.posts);
-
-        const handleAddPost = (text: string) => {
-            const newPost: dbPostsType = {
-                message: text,
-                userId: userDb[0].userId, // Set the userId according to your logic
-                likesCount: 0,
-            };
-            setDbposts([newPost,...dbposts]);
-        };
+        // const handleAddPost = (text: string) => {
+        //     const newPost: dbPostsType = {
+        //         message: text,
+        //         userId: userDb[0].userId, // Set the userId according to your logic
+        //         likesCount: 0,
+        //     };
+        //     return([newPost,...props.posts]);
+        // };
 
         return (
             <div className={s.PostsBlock}>
-                <CreatePostBlock onAddPost={handleAddPost} />
+                <CreatePostBlock addPost={props.addPost} />
                 {dbposts.map((post, index) => {
                     const user = userDb.find(u => u.userId === post.userId);
                     // Skip post if user is not found

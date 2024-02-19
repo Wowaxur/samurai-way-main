@@ -11,18 +11,22 @@ import Settings from "./components/Pages/settings/Settings";
 import Error404 from "./components/Pages/Error404/Error404";
 import {RootStateType} from "./redux/state";
 
+type AppProps = {
+    state: RootStateType,
+    AddPost:(postMessage: string) => void;
+}
 
 
-function App(props: {state: RootStateType}) {
+function App(props: AppProps) {
     return (
         <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
-                <NavBar/>
+                <NavBar state={props.state}/>
                 <div className={'app-wrapper-content'}>
                     <Routes>
                         <Route path={'/'} element={<Navigate to={'/profile'}/> }/>
-                        <Route path='/profile' element={<Profile state={props.state.profilePage}/>}/>
+                        <Route path='/profile' element={<Profile state={props.state} addPost={props.AddPost}/>}/>
                         <Route path='/dialogs' element={<Dialogs state={props.state}/>}/>
                         <Route path='/news' element={<News/>}/>
                         <Route path='/music' element={<Music/>}/>
