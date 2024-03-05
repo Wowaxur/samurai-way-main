@@ -19,7 +19,6 @@ type AppProps = {
 
 function App(props: AppProps) {
     return (
-        <BrowserRouter>
             <div className='app-wrapper'>
                 <Header/>
                 <NavBar state={props.state}/>
@@ -35,7 +34,6 @@ function App(props: AppProps) {
                     </Routes>
                 </div>
             </div>
-        </BrowserRouter>
     );
 }
 

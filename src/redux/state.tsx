@@ -1,4 +1,5 @@
 import {v1} from "uuid";
+import {rerenderEntireTree} from "../render";
 
 type MessageType = {
     id: number
@@ -108,20 +109,20 @@ let state: RootStateType = {
                 userId: userDb[0].userId,
                 id: v1(),
                 message: 'When he asked her favorite number, she answered without hesitation that it was diamonds.',
-                likesCount: 11,
+                likesCount: 7,
             },
             {
                 userId: userDb[1].userId,
                 id: v1(),
                 message: 'Im a great listener, really good with empathy vs sympathy and all that, but I hate people.',
-                likesCount: 11,
+                likesCount: 4,
             },
             {
                 userId: userDb[1].userId,
                 id: v1(),
                 message: 'When he asked her favorite number, she answered without hesitation that it was diamonds.',
                 image: 'https://preview.redd.it/jeuusd992wd41.jpg?auto=webp&s=e2cbc968ecb92a0f55adc1f5d772bc862a180670',
-                likesCount: 11,
+                likesCount: 5,
             },
         ],
     },
@@ -152,7 +153,8 @@ export let addPost = (postMessage: string) =>{
         message: postMessage,
         likesCount: 0
     }
-    state.profilePage.posts.push(newPost)
+    state.profilePage.posts.unshift(newPost);
+    rerenderEntireTree(state)
 }
 
 
