@@ -1,31 +1,54 @@
-import React, {useState} from 'react';
+import React from 'react';
 import s from './Dialogs.module.css';
-import state, {dialogsPageType, RootStateType, userDb} from "../../../redux/state";
-import UserDialogList from "./dialogComponents/userDialogList/UserDialogList";
-import MessageList from "./dialogComponents/messageList/MessageList";
+import DialogItem from "./DialogItem/DialogItem";
+import Message from "./Message/Message";
+import {
+    messagesPageType,
+    SendMessageActionCreator,
+    StoreType,
+    UpdateNewMessageActionCreator
+} from "../../../redux/state";
 
 
-const Dialogs = (props: { state: RootStateType }) => {
-    let [inputValue, setInputValue] = useState("");
-    let [dbdialogs, setdbDialogs] = useState<dialogsPageType>(props.state.dialogsPage)
-    let [selectedUserId, setSelectedUserId] = useState<null | number>(null);
+
+
+interface DialogsProps {
+    state: messagesPageType;
+    store: StoreType;
+}
+const Dialogs: React.FC<DialogsProps> = ({ state, store }) => {
 
 
 
-    const sendMessage = () => {
-        if (inputValue.trim() !== "") {
-            setdbDialogs({
-                ...dbdialogs,
-                messages: [...dbdialogs.messages, { id: 0, message: inputValue }]
-            });
-            setInputValue("");
-        }
+    let dialogsElements = state.dialogs.map( d => <DialogItem name={d.name} id={d.id} />  );
+    let messagesElements = state.messages.map( m => <Message message={m.message} /> );
+    let newMessageBody = state.newMessageText;
+
+    let onSendMessageClick = () => {
+        store.dispatch(SendMessageActionCreator());
     }
+
+    let onNewMessageChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        let body = e.target.value;
+        store.dispatch(UpdateNewMessageActionCreator(body));
+    }
+
     return (
-        <div className={s.DialogsContent}>
-            <UserDialogList dbdialogs={dbdialogs} selectedUserId={selectedUserId} setSelectedUserId={setSelectedUserId}/>
-            <MessageList inputValue={inputValue} selectedUserId={selectedUserId} setSelectedUserId={setSelectedUserId} sendMessage={sendMessage} setInputValue={setInputValue} dbdialogs={dbdialogs}/>
+        <div className={s.dialogs}>
+            <div className={s.dialogsItems}>
+                { dialogsElements }
+            </div>
+            <div className={s.messages}>
+                <div >{ messagesElements }</div>
+                <div>
+                    <div><textarea value={newMessageBody}
+                                   onChange={onNewMessageChange}
+                                   placeholder='Enter your message'></textarea></div>
+                    <div><button onClick={onSendMessageClick}>Send</button></div>
+                </div>
+            </div>
         </div>
-    );
-};
+    )
+}
+
 export default Dialogs;

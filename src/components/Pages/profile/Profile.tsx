@@ -3,7 +3,6 @@ import LokiFace from '../../images/lokiface.png'
 import s from './Profile.module.css'
 import {ProfileTextBlock} from "./porfileTextBlock/ProfileTextBlock";
 import PostsBlock from "./myPosts/postsBlock/PostsBlock";
-import {RootStateType} from "../../../redux/state";
 
 
 const Profile = (props : any) => {
@@ -14,9 +13,9 @@ const Profile = (props : any) => {
                  alt={'1232'}/>
             <div className={s.ProfileWrapper}>
                 <img className={s.LokiFace} src={LokiFace} alt={'123'}/>
-                <ProfileTextBlock user={props.state.user} />
+                <ProfileTextBlock />
             </div>
-            <PostsBlock posts={props.state.profilePage.posts} addPost={props.addPost} />
+            <PostsBlock state={props.state} dispatch={props.dispatch}/>
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import React from "react";
 import s from './NavBar.module.css'
-import {NavLink, useLocation} from "react-router-dom";
-import { useMatch, Link } from 'react-router-dom';
-import {dialogsPageType, RootStateType} from "../../redux/state";
+import {useLocation} from "react-router-dom";
+import {Link } from 'react-router-dom';
+import {StateType} from "../../redux/state";
 type CustomNavLinkType ={
     to: string;
     children: React.ReactNode;
@@ -24,7 +24,7 @@ export function CustomNavLink({ to, children, activeClass, className, ...rest }:
         </Link>
     );
 }
-const NavBar = (props: {state: RootStateType}) => {
+const NavBar = (props: {state: StateType}) => {
 
     return (
         <nav className={s.NavBar}>
@@ -45,7 +45,7 @@ const NavBar = (props: {state: RootStateType}) => {
                 <CustomNavLink  className={s.link} activeClass={s.activeLink} to='/settings'>Settings</CustomNavLink>
             </span>
             <div className={s.FridendWrapper}>
-                {props.state.dialogsPage.dialogs.slice(1).map(fr => <div key={fr.id} className={s.friendList}>
+                {props.state.dialogsPage.dialogs.map(fr => <div key={fr.id} className={s.friendList}>
                     <span className={s.FriendName}>{fr.name}</span>
                 </div>)}
             </div>

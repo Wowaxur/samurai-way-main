@@ -1,12 +1,35 @@
-.DialogsContent {
-    margin: 0 auto;
+.dialogs {
     display: grid;
-    grid-template-areas:
-    'usersList dialogs dialogs' ;
-    justify-content: space-around;
-    flex-direction: row;
-    gap: 10px;
     grid-template-columns: 2fr 10fr;
-    grid-row-gap: 20px;
-    grid-column-gap: 20px;
+    min-width: 100%;
+    justify-content: space-between;
 }
+
+.dialogsItems {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    color: white;
+    gap: 20px;
+
+}
+
+.dialogsItems .active {
+    color: gold;
+}
+
+.messages {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    max-width: 300px;
+}
+
+.messages .message {
+    color: black;
+    border: 2px solid green;
+    border-radius: 15px;
+
+}
+

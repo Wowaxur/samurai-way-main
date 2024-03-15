@@ -1,5 +1,7 @@
-import {v1} from "uuid";
-import {rerenderEntireTree} from "../render";
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
 type MessageType = {
     id: number
@@ -9,153 +11,148 @@ type DialogType = {
     id: number
     name: string
 }
-type CityType = {
-    title: string
-    country: string
-}
-
-type WebSiteType = {
-    webSiteTitle: string
-    webSiteUrl: string
-}
-
-type AddressType = {
-    city: CityType
-    street: string
-}
-
-export type UserType = {
-    id: number
-    name: string
-    dateOfBirth: string
-    address: AddressType
-    education: string
-    webSite: WebSiteType
-}
-
-export type PostType = {
-    id: string
-    message: string
-    image?: string
-    likesCount: number
-    userId: number
-}
 export type profilePageType = {
     posts: Array<PostType>
-
+    newPostText: string
 }
+export type PostType = {
+    id: number;
+    message: string;
+    likesCount: number;
+};
+export type DialogsType = {
+    id: number;
+    name: string;
+};
 
-export type dialogsPageType = {
-    dialogs: Array<DialogType>
-    messages: Array<MessageType>
-}
-type SideBar = {}
+export type messagesPageType = {
+    messages: MessageType[];
+    dialogs: DialogsType[];
+    newMessageText: string;
+};
+export type StateType = {
+    profilePage: profilePageType;
+    dialogsPage: messagesPageType;
+};
 
-export type RootStateType = {
-    profilePage: profilePageType
-    dialogsPage: dialogsPageType
-    sidebar: SideBar
-    user: UserType
+export type StoreType = {
+    _state: StateType;
+    getState: () => StateType;
+    _callSubscriber: (state: StateType) => void;
+    dispatch: (action: any) => void;
+    subscribe: (observer: ()=>void) => void;
+};
 
-}
-export type userDbType = {
-    userId: number
-    name: string
-    avatar: string
-}
-export const userDb: userDbType[] = [
-    {
-        userId: 1,
-        name: 'Vlad',
-        avatar: 'https://cdn.freelance.ru/images/att/1575043_900_600.png',
-    },
-    {
-        userId: 2,
-        name: 'Daria',
-        avatar: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqKBpp4ydpX2-nrgi-DFEnxHDThnD6HfkSNQ&usqp=CAU',
-    }
-]
-
-
-let state: RootStateType = {
-    user:
-        {
-            id: 1,
-            name: "Vladislav Vakula",
-            dateOfBirth: '1 December 1997',
-            address: {
-                city: {
-                    title: "Krasnodar",
-                    country: "Russia"
+let store = {
+    _state: {
+        profilePage: {
+            posts: [
+                {
+                    id: 1,
+                    message: "Hi, how are you",
+                    likesCount: 0,
                 },
-                street: "Naberezhnaya"
-            },
-            education: 'KubSTU',
-            webSite: {
-                webSiteTitle: 'Github',
-                webSiteUrl: 'https://github.com/Wowaxur',
-            },
+                {
+                    id: 2,
+                    message: "I`ts my first post",
+                    likesCount: 13,
+                },
+            ],
+            newPostText: "it-Kamasutra",
         },
-    profilePage: {
-        posts: [
-            {
-                userId: userDb[0].userId, // Correctly using 'userId' here
-                id: v1(),
-                message: 'Hello World! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat, vitae?',
-                image: 'https://avatars.githubusercontent.com/u/62997222?v=4',
-                likesCount: 12,
-            },
-            {
-                userId: userDb[0].userId,
-                id: v1(),
-                message: 'When he asked her favorite number, she answered without hesitation that it was diamonds.',
-                likesCount: 7,
-            },
-            {
-                userId: userDb[1].userId,
-                id: v1(),
-                message: 'Im a great listener, really good with empathy vs sympathy and all that, but I hate people.',
-                likesCount: 4,
-            },
-            {
-                userId: userDb[1].userId,
-                id: v1(),
-                message: 'When he asked her favorite number, she answered without hesitation that it was diamonds.',
-                image: 'https://preview.redd.it/jeuusd992wd41.jpg?auto=webp&s=e2cbc968ecb92a0f55adc1f5d772bc862a180670',
-                likesCount: 5,
-            },
-        ],
+        dialogsPage: {
+            dialogs: [
+                {
+                    id: 1,
+                    name: "Igor",
+                },
+                {
+                    id: 2,
+                    name: "Olga",
+                },
+                {
+                    id: 3,
+                    name: "Sasha",
+                },
+            ],
+            messages: [
+                {
+                    id: 1,
+                    message: "Hi",
+                },
+                {
+                    id: 2,
+                    message: "How are you?",
+                },
+                {
+                    id: 3,
+                    message: "Hellow",
+                },
+            ],
+            newMessageText: "",
+        },
     },
-    dialogsPage: {
-        dialogs: [
-            {id: 0, name: 'Vlad'},
-            {id: 1, name: 'Dimych '},
-            {id: 2, name: 'Andrew'},
-            {id: 3, name: 'Sveta'},
-            {id: 4, name: 'Sasha'},
-            {id: 5, name: 'Viktor'},
-            {id: 6, name: 'Valera'}
-        ],
-        messages: [
-            {id: 1, message: 'Hi'},
-            {id: 2, message: 'How is your it-kamasutra?'},
-            {id: 3, message: 'Yo'},
-            {id: 4, message: 'Yo'},
-            {id: 5, message: 'Yo'}
-        ]
+    _callSubscriber(state: StateType) {
+        console.log("state was rerendered");
     },
-    sidebar: {}
-}
-export let addPost = (postMessage: string) =>{
-    let newPost = {
-        userId: userDb[0].userId,
-        id: v1(),
-        message: postMessage,
-        likesCount: 0
+    getState() {
+        return this._state;
+    },
+    subscribe(observer: Function) {
+        // @ts-ignore
+        this._callSubscriber = observer;
+    },
+    dispatch(action: any) {
+        if (action.type === ADD_POST) {
+            let newPost = {
+                id: Date.now(),
+                message: this._state.profilePage.newPostText,
+                likesCount: 0
+            }
+            this._state.profilePage.posts.unshift(newPost);
+            this._state.profilePage.newPostText = 'Your News';
+            this._callSubscriber(this._state);
+
+
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
+            this._state.profilePage.newPostText = action.newPostText;
+            this._callSubscriber(this._state);
+
+        }else if (action.type === UPDATE_NEW_MESSAGE_TEXT){
+            this._state.dialogsPage.newMessageText = action.newMessageText
+            this._callSubscriber(this._state)
+        }
+        else if (action.type === SEND_MESSAGE){
+           let text =  this._state.dialogsPage.newMessageText
+            this._state.dialogsPage.newMessageText = ''
+            this._state.dialogsPage.messages.unshift({id:this._state.dialogsPage.messages.length + 1, message: text})
+            this._callSubscriber(this._state)
+        }
+
+
     }
-    state.profilePage.posts.unshift(newPost);
-    rerenderEntireTree(state)
 }
+export const AddPostActionCreator = () => {
+    return {
+        type: ADD_POST,
 
-
-export default state;
+    }
+}
+export const UpdateNewPostActionCreator = (text: string) => {
+    return {
+        type: UPDATE_NEW_POST_TEXT,
+        newPostText: text
+    }
+}
+export const UpdateNewMessageActionCreator = (text: string) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_TEXT,
+        newMessageText: text
+    }
+}
+export const SendMessageActionCreator = () => {
+    return {
+        type: SEND_MESSAGE,
+    }
+}
+export default store;
